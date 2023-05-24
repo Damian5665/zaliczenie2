@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.File;
 
 public class Service {
 
@@ -37,6 +38,25 @@ public class Service {
             if(current.GetName().equals(name))
                 return current;
         }
+        return null;
+    }
+  public Student deleteStudentByName(String name) throws IOException {
+    File tempFile = new File("TempFile.txt");
+    File inputFile = new File("db.txt");
+      BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+        var students = this.getStudents();
+        for(Student current : students) {
+            if(current.GetName().equals(name))
+            {
+                continue;
+            }
+            else
+            {
+              writer.write(current.ToString() + System.getProperty("line.separator"));
+            }
+        }
+        writer.close();  
+        boolean successful = tempFile.renameTo(inputFile);
         return null;
     }
 }

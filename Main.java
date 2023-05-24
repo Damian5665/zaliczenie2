@@ -14,6 +14,7 @@ class Main {
                     case 1: exercise1(); break;
                     case 2: exercise2(); break;
                     case 3: exercise3(); break;
+                    case 4: exercise4(); break;
                     default: return;
                 }
             } catch(IOException e) {
@@ -29,6 +30,7 @@ class Main {
         System.out.println("1 - aby dodać studenta");
         System.out.println("2 - aby wypisać wszystkich studentów");
         System.out.println("3 - aby wyszukać studenta po imieniu");
+      System.out.println("4 - znajdz po imienu i usun");
         System.out.println("0 - aby wyjść z programu");
         return scan.nextInt();
     }
@@ -71,5 +73,13 @@ class Main {
             System.out.println("Znaleziono: ");
             System.out.println(wanted.ToString());
         }
+      
     }
+  public static void exercise4() throws IOException {
+        scan.nextLine();
+        System.out.println("Podaj imie: ");
+        var name = scan.nextLine();
+        var wanted = (new Service()).deleteStudentByName(name);
+          System.out.println("Znaleziono i usunieto.");
+  }
 }
